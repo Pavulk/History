@@ -62,19 +62,19 @@ footer {
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
     border-top: 3px solid rgb(133, 206, 143);
-    padding: 10px 10px; /* Отступы по бокам, чтобы контент не лип к краям */
-    color: #87e62e; 
+    padding: 20px 40px;    color: #87e62e; 
     flex-shrink: 0;
+    width: 100%;                   /* Растягиваем на всю ширину */
+    box-sizing: border-box;
 }
 
 /* Контейнер для выравнивания текста и логотипа по разным сторонам */
 .footer-content {
     display: flex;
-    justify-content: space-between; /* Текст слева, логотип справа */
-    align-items: center;            /* Центрирование по вертикали */
-    max-width: 1200px;              /* Чтобы на широких экранах не разлетались слишком далеко */
-    margin: 0 auto;                 /* Центрируем весь контент футера */
-}
+    justify-content: space-between; /* ЭТО растолкает их по краям */
+    align-items: center;
+    width: 100%;                    /* Убрал max-width, чтобы блоки ушли к краям монитора */
+    margin: 0;     }
 
 /* Стили для строк текста */
 .footer-text {
