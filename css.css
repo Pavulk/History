@@ -1,0 +1,224 @@
+/* ОБЩИЕ СТИЛИ */
+html, body {
+    height: 100%; /* Нужно, чтобы браузер понимал, от какой высоты считать 100% */
+    margin: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-image: url("/images/1.jpg"); 
+    background-size: cover;      
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Чтобы фон не «уезжал» при скролле */
+    color: rgb(0, 0, 0);          /* Убрал лишнюю запятую */
+    
+    /* ФЛЕКСБОКС - магия прижатия футера */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;           /* Высота минимум на весь экран */
+}
+
+/* HEADER */
+header {
+    /* СТИЛЬ СТЕКЛА (как в info-box) */
+    background: rgba(0, 0, 0, 0.4);        /* Темная подложка для контраста */
+    backdrop-filter: blur(8px);            /* Размытие фона */
+    -webkit-backdrop-filter: blur(8px);
+    
+    /* ГРАНИЦЫ */
+    border-bottom: 3px solid rgb(133, 206, 143); /* Яркая зеленая полоса в цвет линии */
+    
+    padding: 30px 40px;
+    text-align: center;
+    
+    /* ТЕКСТ */
+    font-size: 24px;
+    font-weight: 800;                     /* Очень жирный шрифт */
+    text-transform: uppercase;
+    letter-spacing: 2px;                  /* Расстояние между буквами для солидности */
+    color: #87e62e;                       /* Белый текст */
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5); /* Тень для объема букв */
+    
+    /* ПОЗИЦИОНИРОВАНИЕ */
+    position: sticky;                     /* Чтобы шапка всегда была сверху при скролле */
+    top: 0;
+    z-index: 1000;
+    
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+/* ОСНОВНАЯ ОБЛАСТЬ */
+.main {
+    /* Уменьшаем отступы: 100px сверху, 20px по бокам, 50px снизу */
+    padding: 100px 20px 50px; 
+    text-align: center;
+    
+    /* Позволяет контенту занимать все свободное место, 
+       но не расталкивать футер слишком далеко */
+    flex: 1 0 auto; 
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border-top: 3px solid rgb(133, 206, 143);
+    padding: 10px 10px; /* Отступы по бокам, чтобы контент не лип к краям */
+    color: #87e62e; 
+    flex-shrink: 0;
+}
+
+/* Контейнер для выравнивания текста и логотипа по разным сторонам */
+.footer-content {
+    display: flex;
+    justify-content: space-between; /* Текст слева, логотип справа */
+    align-items: center;            /* Центрирование по вертикали */
+    max-width: 1200px;              /* Чтобы на широких экранах не разлетались слишком далеко */
+    margin: 0 auto;                 /* Центрируем весь контент футера */
+}
+
+/* Стили для строк текста */
+.footer-text {
+    text-align: left;
+    display: flex;
+    flex-direction: column;         /* Строки друг под другом */
+    gap: 8px;                       /* Расстояние между строками */
+}
+
+.footer-line {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+/* Ссылка на Телеграм */
+.tg-link {
+    color: rgb(133, 206, 143);       /* Твой фирменный зеленый цвет */
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.tg-link:hover {
+    text-shadow: 0 0 10px rgb(97, 226, 114);
+    color: #fff;
+}
+
+/* Логотип */
+.footer-logo img {
+    height: 70px;                   /* Регулируй размер логотипа здесь */
+    width: auto;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.2)); /* Легкое свечение логотипа */
+}
+
+/* ЛИНИЯ ТАЙМЛАЙНА */
+.timeline {
+    position: relative;
+    height: 8px; /* Чуть увеличил для солидности */
+    
+    /* ГРАДИЕНТ: Сделал его более насыщенным по краям (0.6 вместо 0.2) */
+    background: linear-gradient(90deg, 
+        rgba(97, 226, 114, 0.6) 0%, 
+        rgb(97, 226, 114) 20%, 
+        rgb(97, 226, 114) 80%, 
+        rgba(97, 226, 114, 0.6) 100%);
+    
+    margin: 150px auto 100px; 
+    width: 85%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(97, 226, 114, 0.3);
+}
+
+/* ТОЧКИ (КВАДРАТИКИ) */
+.point {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Начальное состояние */
+    width: 16px;
+    height: 16px;
+    background: #9fe1e6; 
+    border: 4px solid rgb(8, 163, 41);
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+}
+
+/* ЭФФЕКТ ПРИ НАВЕДЕНИИ НА КВАДРАТ */
+.point:hover {
+    background: rgb(97, 226, 114);
+    /* Точка увеличивается и поворачивается */
+    transform: translate(-50%, -50%) scale(1.4) rotate(45deg);
+    box-shadow: 0 0 20px rgb(97, 226, 114);
+}
+
+/* ТЕКСТ НАД ТОЧКАМИ */
+.point span {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%); /* Обычное состояние текста */
+    
+    color: #87e62e;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0.7); 
+    padding: 6px 14px;
+    border-radius: 20px;
+    width: auto;
+    
+    /* ВАЖНО: Анимация для текста */
+    transition: all 0.3s ease; 
+}
+
+/* ИСПРАВЛЕНИЕ ПОВОРОТА ТЕКСТА */
+/* Когда мы наводим на .point, его ребенку span говорим крутиться в обратную сторону */
+.point:hover span {
+    /* rotate(-45deg) компенсирует поворот родителя, текст остается ровным */
+    transform: translateX(-50%) rotate(-45deg); 
+}
+.info-box {
+    margin: 50px auto 60px; /* Увеличил отступ снизу, чтобы футер не прилипал */
+    padding: 40px;          /* Больше «воздуха» вокруг текста */
+    width: 75%;
+    
+    /* ТЕМНОЕ СТЕКЛО (Максимальный контраст) */
+    background: rgba(0, 0, 0, 0.55); /* Сделал еще чуть темнее для надежности */
+    backdrop-filter: blur(15px);     /* Размытие фона */
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* ГРАНИЦЫ */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 6px solid rgb(133, 206, 143); /* Твоя фирменная зеленая линия */
+    
+    border-radius: 20px;
+    
+    /* ТЕКСТ */
+    color: #ffffff;         /* Чисто белый текст */
+    font-size: 18px;        /* Оптимальный размер */
+    line-height: 1.8;       /* Хороший межстрочный интервал */
+    text-align: left;       /* Левое выравнивание легче читается в длинных текстах */
+    
+    /* ТЕНЬ И ЭФФЕКТЫ */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    display: none;          /* Управляется JS */
+    
+    /* УБИРАЕМ СКРОЛЛ */
+    height: auto;           /* Блок растет сам */
+    overflow: visible;      /* Никаких полос прокрутки */
+    
+    /* АНИМАЦИЯ появления */
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Обновим анимацию для более мягкого влета */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
