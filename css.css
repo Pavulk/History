@@ -222,3 +222,55 @@ footer {
         transform: translateY(0);
     }
 }
+@media (max-width: 768px) {
+    
+    /* 1. Уменьшаем заголовок, чтобы он не занимал весь экран */
+    header {
+        font-size: 18px; 
+        padding: 15px;
+        letter-spacing: 1px;
+    }
+
+    /* 2. Исправляем таймлайн, чтобы надписи не пересекались */
+    .main {
+        padding: 150px 10px 50px; /* Уменьшаем верхний отступ */
+        overflow-x: hidden;       /* Защита от вылета за края */
+    }
+
+    .timeline {
+        width: 95%; /* Делаем линию шире на маленьком экране */
+        margin: 100px auto 50px;
+    }
+
+    .point span {
+        font-size: 10px;      /* Уменьшаем шрифт надписей */
+        padding: 4px 8px;     /* Уменьшаем плашку текста */
+        bottom: 25px;         /* Прижимаем ближе к точке */
+        white-space: normal;  /* РАЗРЕШАЕМ ПЕРЕНОС ТЕКСТА */
+        width: 80px;          /* Ограничиваем ширину, чтобы слова встали в 2-3 ряда */
+        text-align: center;
+    }
+
+    /* 3. Делаем инфо-бокс шире, чтобы текст было удобно читать */
+    .info-box {
+        width: 90%;           /* Почти на весь экран */
+        padding: 20px;
+        font-size: 16px;
+        margin-top: 30px;
+    }
+
+    /* 4. Перестраиваем футер: логотип и текст теперь друг под другом */
+    .footer-content {
+        flex-direction: column; /* Ставим элементы в колонку */
+        gap: 20px;
+        text-align: center;
+    }
+
+    .footer-text {
+        text-align: center;     /* Центрируем текст на мобилках */
+    }
+
+    .footer-logo img {
+        height: 50px;           /* Уменьшаем логотип */
+    }
+}
