@@ -6,7 +6,7 @@ html, body {
 
 body {
     font-family: 'Open Sans', sans-serif;
-    background-image: url('1.jpg'); 
+    background-image: url("/images/1.jpg"); 
     background-size: cover;      
     background-position: center; 
     background-repeat: no-repeat;
@@ -257,6 +257,7 @@ footer {
         padding: 20px;
         font-size: 16px;
         margin-top: 30px;
+         text-indent: 30px;
     }
 
     /* 4. Перестраиваем футер: логотип и текст теперь друг под другом */
@@ -272,5 +273,52 @@ footer {
 
     .footer-logo img {
         height: 50px;           /* Уменьшаем логотип */
+    }
+}
+
+.info-box img {
+    display: block;
+    max-width: 60%;      /* Можно еще чуть уменьшить саму карту, если она слишком большая */
+    height: auto;
+    
+    /* ОТСТУПЫ: 5px сверху, auto по бокам, 25px снизу */
+    margin: 1px auto 20px; 
+    
+    
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+.info-box i {
+    display: block;        /* Цитата будет отдельным блоком */
+    padding: 20px 40px;    /* Немного свободного места вокруг */
+    color: #cccccc;        /* Сделаем цвет чуть мягче основного белого */
+}
+
+.img-row {
+    display: flex;
+    justify-content: center; /* Центрируем группу картинок */
+    gap: 15px;               /* Расстояние между картинками */
+    margin: 20px 0;          /* Отступы сверху и снизу от текста */
+    width: 100%;
+}
+
+/* Настраиваем сами картинки внутри этого ряда */
+.img-row img {
+    width: 45%;              /* Каждая картинка занимает чуть меньше половины ширины */
+    height: auto;            /* Сохраняем пропорции */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    
+    /* Убираем внешние отступы, которые мы задавали для одиночных картинок ранее */
+    margin: 0 !important; 
+}
+
+/* Чтобы на телефонах картинки вставали друг под другом (в колонку) */
+@media (max-width: 600px) {
+    .img-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .img-row img {
+        width: 90%; /* На телефоне делаем почти на всю ширину */
     }
 }
